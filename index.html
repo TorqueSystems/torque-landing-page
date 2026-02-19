@@ -3,48 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Torque Systems — L'IA qui gère vos relances, rappels et documents.</title>
+<title>Torque Systems — L’IA qui gère vos relances, rappels et documents.</title>
 <meta name="description" content="Torque Systems construit des systèmes IA sur mesure qui font tourner votre entreprise 24/7. Récupérez 5 à 15 heures par semaine.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════════
-   TORQUE SYSTEMS — Landing Page
+/* ================================================
+   TORQUE SYSTEMS — Landing Page v2
    Charte: Slate Black #0F172A · Trust Blue #1E40AF · White #FFFFFF
-   ═══════════════════════════════════════════════ */
+   ================================================ */
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
   --slate: #0F172A;
+  --slate-80: rgba(15, 23, 42, 0.8);
   --blue: #1E40AF;
   --blue-light: #2563EB;
-  --blue-glow: rgba(30, 64, 175, 0.12);
+  --blue-glow: rgba(30, 64, 175, 0.08);
+  --blue-glow-strong: rgba(30, 64, 175, 0.15);
   --white: #FFFFFF;
+  --off-white: #FAFBFD;
   --gray-50: #F8FAFC;
   --gray-100: #F1F5F9;
   --gray-200: #E2E8F0;
+  --gray-300: #CBD5E1;
   --gray-400: #94A3B8;
+  --gray-500: #64748B;
   --gray-600: #475569;
+  --green: #16A34A;
+  --green-bg: rgba(22, 163, 74, 0.08);
+  --amber: #D97706;
+  --amber-bg: rgba(217, 119, 6, 0.08);
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--slate);
   background: var(--white);
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {
   font-family: 'DM Sans', sans-serif;
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
 }
 
 .container {
@@ -53,19 +63,23 @@ h1, h2, h3, h4 {
   padding: 0 24px;
 }
 
-/* ─── NAV ─── */
+/* --- NAV --- */
 .nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--gray-200);
-  transition: box-shadow 0.3s;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
-.nav.scrolled { box-shadow: 0 1px 24px rgba(15, 23, 42, 0.06); }
+.nav.scrolled {
+  border-bottom-color: var(--gray-200);
+  box-shadow: 0 1px 24px rgba(15, 23, 42, 0.04);
+}
 .nav-inner {
   display: flex;
   align-items: center;
@@ -80,6 +94,19 @@ h1, h2, h3, h4 {
   color: var(--slate);
 }
 .nav-logo svg { height: 32px; width: auto; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray-500);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--slate); }
 .nav-cta {
   display: inline-flex;
   align-items: center;
@@ -95,59 +122,70 @@ h1, h2, h3, h4 {
 }
 .nav-cta:hover { background: var(--blue-light); transform: translateY(-1px); }
 
-/* ─── HERO ─── */
+/* --- HERO --- */
 .hero {
-  padding: 140px 0 100px;
+  padding: 148px 0 108px;
   position: relative;
   overflow: hidden;
 }
 .hero::before {
   content: '';
   position: absolute;
-  top: -200px;
+  top: -300px;
   right: -200px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, var(--blue-glow) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -200px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(30, 64, 175, 0.04) 0%, transparent 65%);
   pointer-events: none;
 }
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 16px;
+  padding: 7px 18px;
   border: 1px solid var(--gray-200);
   border-radius: 100px;
   font-size: 13px;
   font-weight: 500;
   color: var(--gray-600);
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   animation: fadeUp 0.6s ease both;
 }
 .hero-badge-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #22C55E;
+  background: var(--green);
   animation: pulse 2s infinite;
 }
 .hero h1 {
-  font-size: clamp(40px, 6vw, 68px);
+  font-size: clamp(40px, 5.5vw, 64px);
   color: var(--slate);
   margin-bottom: 24px;
-  max-width: 800px;
+  max-width: 780px;
   animation: fadeUp 0.6s 0.1s ease both;
 }
 .hero h1 em {
   font-style: normal;
   color: var(--blue);
+  position: relative;
 }
 .hero-sub {
-  font-size: clamp(17px, 2vw, 20px);
-  color: var(--gray-600);
-  max-width: 580px;
-  line-height: 1.7;
-  margin-bottom: 40px;
+  font-size: clamp(17px, 2vw, 19px);
+  color: var(--gray-500);
+  max-width: 560px;
+  line-height: 1.75;
+  margin-bottom: 44px;
   animation: fadeUp 0.6s 0.2s ease both;
 }
 .hero-actions {
@@ -169,12 +207,12 @@ h1, h2, h3, h4 {
   font-weight: 600;
   border-radius: 10px;
   transition: all 0.25s;
-  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.25);
+  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.2);
 }
 .btn-primary:hover {
   background: var(--blue-light);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.3);
+  box-shadow: 0 8px 28px rgba(30, 64, 175, 0.28);
 }
 .btn-primary svg { width: 18px; height: 18px; }
 .btn-ghost {
@@ -182,41 +220,44 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: 8px;
   padding: 16px 24px;
-  color: var(--slate);
+  color: var(--gray-600);
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
   border-radius: 10px;
   transition: all 0.2s;
 }
-.btn-ghost:hover { background: var(--gray-100); }
+.btn-ghost:hover { background: var(--gray-100); color: var(--slate); }
+
 .hero-proof {
-  margin-top: 64px;
+  margin-top: 72px;
   display: flex;
-  gap: 48px;
+  gap: 56px;
   flex-wrap: wrap;
   animation: fadeUp 0.6s 0.4s ease both;
 }
 .hero-stat { display: flex; flex-direction: column; }
 .hero-stat-number {
   font-family: 'DM Sans', sans-serif;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
   color: var(--blue);
+  letter-spacing: -0.02em;
 }
 .hero-stat-label {
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--gray-400);
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  margin-top: 2px;
 }
 
-/* ─── SECTION COMMON ─── */
-section { padding: 100px 0; }
+/* --- SECTION COMMON --- */
+section { padding: 104px 0; }
 .section-label {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--blue);
@@ -229,18 +270,18 @@ section { padding: 100px 0; }
 }
 .section-desc {
   font-size: 17px;
-  color: var(--gray-600);
+  color: var(--gray-500);
   max-width: 560px;
-  line-height: 1.7;
+  line-height: 1.75;
   margin-bottom: 56px;
 }
 
-/* ─── BEFORE / AFTER ─── */
+/* --- BEFORE / AFTER --- */
 .before-after { background: var(--gray-50); }
 .ba-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 28px;
 }
 .ba-card {
   padding: 40px;
@@ -248,7 +289,11 @@ section { padding: 100px 0; }
   border: 1px solid var(--gray-200);
 }
 .ba-card--before { background: var(--white); }
-.ba-card--after { background: var(--slate); color: var(--white); border-color: transparent; }
+.ba-card--after {
+  background: var(--slate);
+  color: var(--white);
+  border-color: transparent;
+}
 .ba-card-label {
   font-size: 12px;
   font-weight: 700;
@@ -277,7 +322,7 @@ section { padding: 100px 0; }
   align-items: flex-start;
   gap: 10px;
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 .ba-card--before .ba-list li { color: var(--gray-600); }
 .ba-card--after .ba-list li { color: rgba(255, 255, 255, 0.85); }
@@ -288,7 +333,7 @@ section { padding: 100px 0; }
   margin-top: 2px;
 }
 
-/* ─── SECTORS ─── */
+/* --- SECTORS --- */
 .sectors-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -301,11 +346,12 @@ section { padding: 100px 0; }
   transition: all 0.3s;
   position: relative;
   overflow: hidden;
+  background: var(--white);
 }
 .sector-card:hover {
   border-color: var(--blue);
   box-shadow: 0 8px 32px var(--blue-glow);
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 }
 .sector-icon {
   width: 48px;
@@ -324,8 +370,8 @@ section { padding: 100px 0; }
 }
 .sector-card p {
   font-size: 15px;
-  color: var(--gray-600);
-  line-height: 1.6;
+  color: var(--gray-500);
+  line-height: 1.65;
   margin-bottom: 20px;
 }
 .sector-result {
@@ -336,11 +382,18 @@ section { padding: 100px 0; }
   border-radius: 100px;
   background: var(--blue-glow);
   color: var(--blue);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
 }
+.sector-result-note {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--gray-400);
+  font-style: italic;
+}
 
-/* ─── PROCESS ─── */
+/* --- PROCESS --- */
 .process { background: var(--gray-50); }
 .process-steps {
   display: grid;
@@ -370,8 +423,8 @@ section { padding: 100px 0; }
 }
 .process-step p {
   font-size: 14px;
-  color: var(--gray-600);
-  line-height: 1.6;
+  color: var(--gray-500);
+  line-height: 1.65;
 }
 .step-tag {
   display: inline-block;
@@ -380,13 +433,77 @@ section { padding: 100px 0; }
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #22C55E;
-  background: rgba(34, 197, 94, 0.1);
+  color: var(--green);
+  background: var(--green-bg);
   padding: 4px 10px;
   border-radius: 100px;
 }
 
-/* ─── CLIENT-HOSTED ─── */
+/* --- FOUNDER --- */
+.founder {
+  background: var(--white);
+  border-top: 1px solid var(--gray-100);
+}
+.founder-inner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.founder-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--blue-glow-strong), var(--blue-glow));
+  border: 2px solid var(--gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--blue);
+}
+.founder-text h3 {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+.founder-role {
+  font-size: 14px;
+  color: var(--blue);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.founder-bio {
+  font-size: 16px;
+  color: var(--gray-500);
+  line-height: 1.75;
+  max-width: 640px;
+}
+.founder-creds {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.founder-cred {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-500);
+  padding: 5px 12px;
+  border: 1px solid var(--gray-200);
+  border-radius: 100px;
+}
+.founder-cred svg {
+  width: 14px;
+  height: 14px;
+  color: var(--blue);
+}
+
+/* --- CLIENT-HOSTED --- */
 .hosted-content {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -399,8 +516,8 @@ section { padding: 100px 0; }
 }
 .hosted-text p {
   font-size: 17px;
-  color: var(--gray-600);
-  line-height: 1.7;
+  color: var(--gray-500);
+  line-height: 1.75;
   margin-bottom: 24px;
 }
 .hosted-quote {
@@ -411,7 +528,7 @@ section { padding: 100px 0; }
   font-size: 15px;
   font-style: italic;
   color: var(--slate);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 .compare-table {
   width: 100%;
@@ -445,15 +562,83 @@ section { padding: 100px 0; }
 }
 .compare-table tbody tr:last-child td { border-bottom: none; }
 
-/* ─── PRICING ─── */
-.pricing { background: var(--gray-50); }
-.pricing-grid {
+/* --- PILOT PROGRAM --- */
+.pilot {
+  background: var(--slate);
+  position: relative;
+  overflow: hidden;
+}
+.pilot::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(30, 64, 175, 0.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+.pilot .section-label { color: var(--blue-light); }
+.pilot .section-title { color: var(--white); max-width: 700px; }
+.pilot .section-desc { color: rgba(255, 255, 255, 0.55); }
+.pilot-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  position: relative;
+}
+.pilot-card {
+  padding: 32px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.pilot-card h3 {
+  color: var(--white);
+  font-size: 18px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pilot-card h3 svg {
+  width: 20px;
+  height: 20px;
+  color: var(--blue-light);
+}
+.pilot-card p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.65;
+}
+.pilot-cta {
+  margin-top: 48px;
+  text-align: center;
+  position: relative;
+}
+.pilot-slots {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--amber);
+  background: var(--amber-bg);
+  padding: 8px 18px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+.pilot-slots svg { width: 16px; height: 16px; }
+
+/* --- PRICING --- */
+.pricing { background: var(--gray-50); }
+.pricing-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 24px;
 }
-.price-card {
-  padding: 40px 32px;
+.pricing-tier {
+  padding: 36px 32px;
   border-radius: 16px;
   background: var(--white);
   border: 1px solid var(--gray-200);
@@ -461,13 +646,13 @@ section { padding: 100px 0; }
   display: flex;
   flex-direction: column;
 }
-.price-card--featured {
+.pricing-tier--featured {
   border-color: var(--blue);
   box-shadow: 0 8px 40px var(--blue-glow);
   position: relative;
 }
-.price-card--featured::before {
-  content: 'Populaire';
+.pricing-tier--featured::before {
+  content: 'Le plus choisi';
   position: absolute;
   top: -12px;
   left: 50%;
@@ -480,59 +665,33 @@ section { padding: 100px 0; }
   letter-spacing: 0.06em;
   padding: 4px 16px;
   border-radius: 100px;
+  white-space: nowrap;
 }
-.price-card-name {
+.pricing-tier-name {
   font-family: 'DM Sans', sans-serif;
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 8px;
 }
-.price-card-desc {
+.pricing-tier-desc {
   font-size: 14px;
-  color: var(--gray-600);
+  color: var(--gray-500);
+  line-height: 1.55;
   margin-bottom: 24px;
-  line-height: 1.5;
-}
-.price-amount {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 44px;
-  font-weight: 700;
-  color: var(--slate);
-  margin-bottom: 4px;
-}
-.price-amount span {
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--gray-400);
-}
-.price-note {
-  font-size: 13px;
-  color: var(--gray-400);
-  margin-bottom: 28px;
-}
-.price-features {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 32px;
   flex: 1;
 }
-.price-features li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+.pricing-tier-price {
+  font-family: 'DM Sans', sans-serif;
   font-size: 14px;
-  line-height: 1.5;
+  font-weight: 600;
+  color: var(--slate);
+  margin-bottom: 20px;
 }
-.price-features li svg {
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  color: var(--blue);
-  margin-top: 1px;
+.pricing-tier-price span {
+  font-size: 36px;
+  letter-spacing: -0.02em;
 }
-.price-cta {
+.pricing-tier-cta {
   display: block;
   text-align: center;
   padding: 14px 24px;
@@ -542,31 +701,31 @@ section { padding: 100px 0; }
   font-size: 15px;
   transition: all 0.2s;
 }
-.price-cta--outline {
+.pricing-tier-cta--outline {
   border: 2px solid var(--gray-200);
   color: var(--slate);
 }
-.price-cta--outline:hover { border-color: var(--blue); color: var(--blue); }
-.price-cta--filled {
+.pricing-tier-cta--outline:hover { border-color: var(--blue); color: var(--blue); }
+.pricing-tier-cta--filled {
   background: var(--blue);
   color: var(--white);
 }
-.price-cta--filled:hover { background: var(--blue-light); transform: translateY(-1px); }
+.pricing-tier-cta--filled:hover { background: var(--blue-light); transform: translateY(-1px); }
 .pricing-footer {
   text-align: center;
   margin-top: 48px;
   font-size: 15px;
-  color: var(--gray-600);
+  color: var(--gray-500);
 }
 .pricing-footer strong { color: var(--slate); }
 
-/* ─── FAQ ─── */
+/* --- FAQ --- */
 .faq-list {
   max-width: 720px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 .faq-item {
   border: 1px solid var(--gray-200);
@@ -590,6 +749,7 @@ section { padding: 100px 0; }
   color: var(--slate);
   text-align: left;
   gap: 16px;
+  transition: color 0.2s;
 }
 .faq-q:hover { color: var(--blue); }
 .faq-q svg {
@@ -603,19 +763,19 @@ section { padding: 100px 0; }
 .faq-a {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.35s ease, padding 0.35s ease;
+  transition: max-height 0.35s ease;
 }
 .faq-item.open .faq-a { max-height: 400px; }
 .faq-a-inner {
   padding: 0 28px 22px;
   font-size: 15px;
-  color: var(--gray-600);
-  line-height: 1.7;
+  color: var(--gray-500);
+  line-height: 1.75;
 }
 
-/* ─── CTA FINAL ─── */
+/* --- CTA FINAL --- */
 .final-cta {
-  background: var(--slate);
+  background: var(--blue);
   color: var(--white);
   text-align: center;
   padding: 100px 0;
@@ -625,12 +785,12 @@ section { padding: 100px 0; }
 .final-cta::before {
   content: '';
   position: absolute;
-  bottom: -120px;
+  top: -120px;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;
+  width: 800px;
   height: 400px;
-  background: radial-gradient(circle, rgba(30, 64, 175, 0.2) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 .final-cta h2 {
@@ -641,7 +801,7 @@ section { padding: 100px 0; }
 }
 .final-cta p {
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.65);
   margin-bottom: 40px;
   position: relative;
 }
@@ -649,9 +809,17 @@ section { padding: 100px 0; }
   position: relative;
   font-size: 17px;
   padding: 18px 36px;
+  background: var(--white);
+  color: var(--blue);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+.final-cta .btn-primary:hover {
+  background: var(--off-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-/* ─── FOOTER ─── */
+/* --- FOOTER --- */
 footer {
   padding: 40px 0;
   border-top: 1px solid var(--gray-200);
@@ -664,29 +832,34 @@ footer {
   gap: 16px;
 }
 .footer-left {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--gray-400);
 }
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
 .footer-right a {
-  color: var(--gray-600);
+  color: var(--gray-500);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   transition: color 0.2s;
 }
 .footer-right a:hover { color: var(--blue); }
 
-/* ─── ANIMATIONS ─── */
+/* --- ANIMATIONS --- */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  50% { opacity: 0.4; }
 }
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
+  transform: translateY(28px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 .reveal.visible {
@@ -694,9 +867,9 @@ footer {
   transform: translateY(0);
 }
 
-/* ─── RESPONSIVE ─── */
+/* --- RESPONSIVE --- */
 @media (max-width: 900px) {
-  .ba-grid, .sectors-grid, .pricing-grid {
+  .ba-grid, .sectors-grid, .pricing-overview, .pilot-grid {
     grid-template-columns: 1fr;
   }
   .process-steps {
@@ -708,7 +881,14 @@ footer {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+  .founder-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .founder-avatar { margin: 0 auto; }
+  .founder-creds { justify-content: center; }
   .hero-proof { gap: 32px; }
+  .nav-links { display: none; }
 }
 @media (max-width: 600px) {
   section { padding: 72px 0; }
@@ -719,23 +899,50 @@ footer {
   .nav-cta span { display: none; }
 }
 
-/* ── Print ── */
+/* --- PRINT --- */
 @media print {
-  * { animation: none !important; transition: none !important; }
-  body { font-size: 11pt; line-height: 1.5; }
-  @page { margin: 1cm; }
-  nav, .nav-cta, .hero-actions, .cta-final, .btn, footer { display: none !important; }
-  section { padding: 24px 0; break-inside: avoid; }
-  .pricing-grid, .use-case-grid, .process-steps { break-inside: avoid; }
-  .pricing-card, .use-case-card, .process-step { break-inside: avoid; }
-  .faq-item { break-inside: avoid; }
-  * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  body {
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #000;
+  }
+  @page {
+    margin: 2cm 1.5cm;
+  }
+  nav, .nav, .hero-actions, .final-cta, .pilot-cta .btn-primary, footer { display: none !important; }
+  section {
+    padding: 24px 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .ba-grid, .sectors-grid, .pricing-overview, .process-steps, .pilot-grid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .ba-card, .sector-card, .pricing-tier, .process-step, .faq-item, .pilot-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  h2, h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .container { max-width: 100%; padding: 0; }
+  .reveal { opacity: 1 !important; transform: none !important; }
 }
 </style>
 </head>
 <body>
 
-<!-- ═══ NAV ═══ -->
+<!-- NAV -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="#" class="nav-logo">
@@ -746,6 +953,12 @@ footer {
         </g>
       </svg>
     </a>
+    <div class="nav-links">
+      <a href="#sectors" class="nav-link">Solutions</a>
+      <a href="#process" class="nav-link">Méthode</a>
+      <a href="#pricing" class="nav-link">Tarifs</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+    </div>
     <a href="https://cal.eu/torquesystems/rdv" target="_blank" class="nav-cta">
       <span>Prendre rendez-vous</span>
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -753,21 +966,21 @@ footer {
   </div>
 </nav>
 
-<!-- ═══ HERO ═══ -->
+<!-- HERO -->
 <section class="hero">
   <div class="container">
     <div class="hero-badge">
       <span class="hero-badge-dot"></span>
-      Systèmes IA sur mesure pour dirigeants
+      Automatisation IA pour PME &middot; Île-de-France
     </div>
-    <h1>L'IA qui gère vos relances,<br>rappels et documents.<br><em>Pas vous.</em></h1>
-    <p class="hero-sub">Nous concevons des systèmes intelligents sur mesure qui travaillent en arrière-plan &mdash; 24h/24, 7j/7 &mdash; pour que vous récupériez 5 à 15&nbsp;heures par semaine.</p>
+    <h1>Vos relances, rappels<br>et documents gérés par l’IA.<br><em>Pas par vous.</em></h1>
+    <p class="hero-sub">Je conçois des systèmes intelligents sur mesure qui travaillent en arrière-plan &mdash; 24h/24, 7j/7 &mdash; pour que vous récupériez 5 à 15&nbsp;heures par semaine.</p>
     <div class="hero-actions">
       <a href="https://cal.eu/torquesystems/rdv" target="_blank" class="btn-primary">
         Réserver un appel découverte
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
-      <a href="#process" class="btn-ghost">Comment ça marche ?</a>
+      <a href="#process" class="btn-ghost">Comment ça marche ?</a>
     </div>
     <div class="hero-proof">
       <div class="hero-stat">
@@ -775,8 +988,8 @@ footer {
         <span class="hero-stat-label">Systèmes actifs</span>
       </div>
       <div class="hero-stat">
-        <span class="hero-stat-number">2-4 mois</span>
-        <span class="hero-stat-label">ROI moyen</span>
+        <span class="hero-stat-number">~30€/mois</span>
+        <span class="hero-stat-label">Coût d’infrastructure</span>
       </div>
       <div class="hero-stat">
         <span class="hero-stat-number">100%</span>
@@ -786,7 +999,7 @@ footer {
   </div>
 </section>
 
-<!-- ═══ BEFORE / AFTER ═══ -->
+<!-- BEFORE / AFTER -->
 <section class="before-after">
   <div class="container">
     <div class="section-label reveal">Le constat</div>
@@ -796,14 +1009,14 @@ footer {
       <div class="ba-card ba-card--before reveal">
         <div class="ba-card-label">
           <svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M7 7l6 6M13 7l-6 6"/></svg>
-          Avant Torque
+          Aujourd’hui
         </div>
         <h3>Le quotidien qui vous épuise</h3>
         <ul class="ba-list">
-          <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#94A3B8" stroke-width="1.5"><path d="M6 10h8"/></svg>Copier-coller entre Gmail, Excel et l'agenda</li>
+          <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#94A3B8" stroke-width="1.5"><path d="M6 10h8"/></svg>Copier-coller entre Gmail, Excel et l’agenda</li>
           <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#94A3B8" stroke-width="1.5"><path d="M6 10h8"/></svg>Relancer les impayés un par un, manuellement</li>
           <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#94A3B8" stroke-width="1.5"><path d="M6 10h8"/></svg>Oublier des devis, des rendez-vous, des rappels</li>
-          <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#94A3B8" stroke-width="1.5"><path d="M6 10h8"/></svg>Quelqu'un dans l'équipe passe 2h/jour sur des tâches que personne ne devrait faire</li>
+          <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#94A3B8" stroke-width="1.5"><path d="M6 10h8"/></svg>Quelqu’un passe 2h/jour sur des tâches que personne ne devrait faire</li>
           <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#94A3B8" stroke-width="1.5"><path d="M6 10h8"/></svg>Aucune vision claire de votre activité</li>
         </ul>
       </div>
@@ -814,10 +1027,10 @@ footer {
         </div>
         <h3>Le système fait le travail</h3>
         <ul class="ba-list">
-          <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#60A5FA" stroke-width="1.5"><path d="M7 10l2 2 4-4"/></svg>L'email arrive, le système le lit, le classe, relance</li>
-          <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#60A5FA" stroke-width="1.5"><path d="M7 10l2 2 4-4"/></svg>Les impayés sont relancés automatiquement J+15, J+30, J+45</li>
-          <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#60A5FA" stroke-width="1.5"><path d="M7 10l2 2 4-4"/></svg>Rappels SMS et email intelligents &mdash; plus d'oublis, plus de no-shows</li>
-          <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#60A5FA" stroke-width="1.5"><path d="M7 10l2 2 4-4"/></svg>Health-check toutes les 6h, vous êtes alerté si nécessaire</li>
+          <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#60A5FA" stroke-width="1.5"><path d="M7 10l2 2 4-4"/></svg>L’email arrive, le système le lit, le classe, relance</li>
+          <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#60A5FA" stroke-width="1.5"><path d="M7 10l2 2 4-4"/></svg>Les impayés sont rellancés automatiquement J+15, J+30, J+45</li>
+          <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#60A5FA" stroke-width="1.5"><path d="M7 10l2 2 4-4"/></svg>Rappels SMS et email &mdash; plus d’oublis, plus de no-shows</li>
+          <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#60A5FA" stroke-width="1.5"><path d="M7 10l2 2 4-4"/></svg>Health-check toutes les 6h, alerte si nécessaire</li>
           <li><svg class="ba-icon" viewBox="0 0 20 20" fill="none" stroke="#60A5FA" stroke-width="1.5"><path d="M7 10l2 2 4-4"/></svg>Tableau de bord chaque lundi matin</li>
         </ul>
       </div>
@@ -825,44 +1038,46 @@ footer {
   </div>
 </section>
 
-<!-- ═══ SECTEURS ═══ -->
+<!-- SECTEURS -->
 <section class="sectors" id="sectors">
   <div class="container">
-    <div class="section-label reveal">Ce que l'IA gère pour vous</div>
+    <div class="section-label reveal">Ce que l’IA gère pour vous</div>
     <h2 class="section-title reveal">Des systèmes concrets.<br>Des résultats mesurables.</h2>
-    <p class="section-desc reveal">Chaque système résout un problème précis. Vous choisissez lesquels, on les construit.</p>
+    <p class="section-desc reveal">Chaque système résout un problème précis. Vous choisissez lesquels, je les construis.</p>
     <div class="sectors-grid">
       <div class="sector-card reveal">
         <div class="sector-icon">&#x1F4B0;</div>
         <h3>Relances &amp; recouvrement</h3>
-        <p>Vos impayés sont relancés automatiquement à J+15, J+30, J+45. Le ton s'adapte, l'historique est tracé, vous n'y touchez pas.</p>
+        <p>Vos impayés sont rellancés automatiquement à J+15, J+30, J+45. Le ton s’adapte, l’historique est tracé, vous n’y touchez pas.</p>
         <span class="sector-result">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 7l-5-5-5 5"/></svg>
-          +30% de trésorerie récupérée
+          Jusqu’à +30% de trésorerie récupérée
         </span>
+        <span class="sector-result-note">Estimation basée sur benchmarks sectoriels PME</span>
       </div>
       <div class="sector-card reveal">
         <div class="sector-icon">&#x1F4C2;</div>
         <h3>Collecte de documents</h3>
-        <p>L'IA demande les pièces manquantes, relance si besoin, trie et classe automatiquement. Zéro intervention humaine.</p>
+        <p>L’IA demande les pièces manquantes, relance si besoin, trie et classe automatiquement. Zéro intervention humaine.</p>
         <span class="sector-result">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 7l-5-5-5 5"/></svg>
-          150 heures / an économisées
+          Jusqu’à 150 heures / an économisées
         </span>
+        <span class="sector-result-note">Estimation pour un cabinet de 20 à 50 salariés</span>
       </div>
       <div class="sector-card reveal">
         <div class="sector-icon">&#x1F514;</div>
         <h3>Rappels &amp; confirmations</h3>
-        <p>SMS et emails intelligents envoyés au bon moment. Confirmations, rappels de rendez-vous, suivi post-intervention. Plus aucun oubli.</p>
+        <p>SMS et emails intelligents envoyés au bon moment. Confirmations, rappels de rendez-vous, suivi post-intervention.</p>
         <span class="sector-result">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 7l-5-5-5 5"/></svg>
-          0 oubli &middot; 0 no-show
+          Objectif : zéro oubli, zéro no-show
         </span>
       </div>
       <div class="sector-card reveal">
         <div class="sector-icon">&#x1F4CA;</div>
         <h3>Suivi &amp; reporting</h3>
-        <p>Chaque lundi matin, un tableau de bord complet dans votre boîte mail. Activité, chiffres clés, alertes. Généré par l'IA, sans effort.</p>
+        <p>Chaque lundi matin, un tableau de bord complet dans votre boîte mail. Activité, chiffres clés, alertes. Généré par l’IA, sans effort.</p>
         <span class="sector-result">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 7l-5-5-5 5"/></svg>
           Vision claire en temps réel
@@ -872,17 +1087,17 @@ footer {
   </div>
 </section>
 
-<!-- ═══ PROCESS ═══ -->
+<!-- PROCESS -->
 <section class="process" id="process">
   <div class="container">
     <div class="section-label reveal">Comment ça marche</div>
     <h2 class="section-title reveal">De la conversation<br>au système qui tourne.</h2>
-    <p class="section-desc reveal">Un processus simple, transparent, sans engagement jusqu'au Go.</p>
+    <p class="section-desc reveal">Un processus simple, transparent, sans engagement jusqu’au Go.</p>
     <div class="process-steps reveal">
       <div class="process-step">
         <div class="step-num">01</div>
         <h3>Discovery</h3>
-        <p>30 minutes de conversation. On identifie ce qui vous prend du temps et ce qui peut être éliminé.</p>
+        <p>30 minutes de conversation. On identifie ce qui vous prend du temps et ce qui peut être automatisé.</p>
         <span class="step-tag">Gratuit</span>
       </div>
       <div class="process-step">
@@ -905,17 +1120,45 @@ footer {
   </div>
 </section>
 
-<!-- ═══ CLIENT-HOSTED ═══ -->
+<!-- FONDATEUR -->
+<section class="founder" id="about">
+  <div class="container">
+    <div class="founder-inner reveal">
+      <div class="founder-avatar">G</div>
+      <div class="founder-text">
+        <h3>Gabriel</h3>
+        <div class="founder-role">Fondateur &middot; Torque Systems</div>
+        <p class="founder-bio">Consultant senior en transformation digitale depuis presque 10 ans. J’ai vu de l’intérieur comment les grandes entreprises automatisent leurs processus. Torque rend ces mêmes méthodes accessibles aux PME &mdash; sans budget DSI, sans équipe technique, sans complexité inutile.</p>
+        <div class="founder-creds">
+          <span class="founder-cred">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+            Google Cloud Digital Leader
+          </span>
+          <span class="founder-cred">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+            ~10 ans conseil &amp; gestion de projets
+          </span>
+          <span class="founder-cred">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+            n8n &amp; IA avancée
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT-HOSTED -->
 <section class="hosted" id="hosted">
   <div class="container">
     <div class="hosted-content">
       <div class="hosted-text reveal">
         <div class="section-label">Le modèle Torque</div>
         <h2>Vous possédez tout.<br>Toujours.</h2>
-        <p>Imaginez un électricien qui installe votre cuisine. Il fait le câblage, connecte les appareils, vérifie que tout marche. Puis il part. La cuisine est à vous. Vous payez l'électricité à EDF, pas à l'électricien.</p>
-        <p><strong>Torque fonctionne pareil.</strong> Vos données ne quittent jamais votre infrastructure. Si vous arrêtez de travailler avec nous, tout continue de tourner.</p>
+        <p>Imaginez un électricien qui installe votre cuisine. Il fait le câblage, connecte les appareils, vérifie que tout marche. Puis il part. La cuisine est à vous. Vous payez l’électricité à EDF, pas à l’électricien.</p>
+        <p><strong>Torque fonctionne pareil.</strong> Vos données ne quittent jamais votre infrastructure. Si vous arrêtez de travailler avec moi, tout continue de tourner.</p>
         <div class="hosted-quote">
-          &laquo;&nbsp;Avec Zapier, vos données sont aux USA et si vous arrêtez, tout s'éteint. Avec Torque, elles sont chez vous &mdash; et tout continue.&nbsp;&raquo;
+          &laquo;&nbsp;Avec Zapier, vos données sont aux USA et si vous arrêtez, tout s’éteint. Avec Torque, elles sont chez vous &mdash; et tout continue.&nbsp;&raquo;
         </div>
       </div>
       <div class="reveal">
@@ -932,13 +1175,13 @@ footer {
             <tr>
               <td><strong>Vos données</strong></td>
               <td>Chez Zapier (USA)</td>
-              <td>Chez l'agence</td>
+              <td>Chez l’agence</td>
               <td>Chez VOUS</td>
             </tr>
             <tr>
               <td><strong>Si vous arrêtez</strong></td>
-              <td>Tout s'éteint</td>
-              <td>Tout s'éteint</td>
+              <td>Tout s’éteint</td>
+              <td>Tout s’éteint</td>
               <td>Tout continue</td>
             </tr>
             <tr>
@@ -966,121 +1209,133 @@ footer {
   </div>
 </section>
 
-<!-- ═══ PRICING ═══ -->
+<!-- PROGRAMME PILOTE -->
+<section class="pilot" id="pilot">
+  <div class="container">
+    <div class="section-label reveal">Programme pilote</div>
+    <h2 class="section-title reveal">Faites partie des premières<br>entreprises à en bénéficier.</h2>
+    <p class="section-desc reveal">Je sélectionne un nombre limité d’entreprises pilotes pour co-construire leurs systèmes à conditions préférentielles.</p>
+    <div class="pilot-grid">
+      <div class="pilot-card reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 7l-5-5-5 5"/></svg>
+          Ce que vous gagnez
+        </h3>
+        <p>Un système complet construit sur mesure, une formation personnalisée, un support prioritaire pendant 6 mois, et un tarif pilote significativement réduit par rapport à la grille standard.</p>
+      </div>
+      <div class="pilot-card reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Ce que je demande
+        </h3>
+        <p>Votre retour honnête sur le processus, un témoignage si vous êtes satisfait, et la possibilité de présenter votre cas (anonymisé si souhaité) comme étude de cas.</p>
+      </div>
+    </div>
+    <div class="pilot-cta reveal">
+      <div class="pilot-slots">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Places limitées &mdash; Printemps 2026
+      </div>
+      <br>
+      <a href="https://cal.eu/torquesystems/rdv" target="_blank" class="btn-primary">
+        Candidater au programme pilote
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="container">
     <div class="section-label reveal">Investissement</div>
     <h2 class="section-title reveal">Un investissement,<br>pas une dépense.</h2>
     <p class="section-desc reveal">Rentabilisé en 2 à 4 mois. Comparez avec 24 000&euro;/an pour un assistant à mi-temps.</p>
-    <div class="pricing-grid">
-      <div class="price-card reveal">
-        <div class="price-card-name">Starter</div>
-        <div class="price-card-desc">1 système complexe ou 3 simples. Idéal pour démarrer.</div>
-        <div class="price-amount">2 990&euro;</div>
-        <div class="price-note">Paiement unique + ~30&euro;/mois infra</div>
-        <ul class="price-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>1 système complexe OU 3 simples</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Formation 2h incluse</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Support 3 mois</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Documentation complète</li>
-        </ul>
-        <a href="https://cal.eu/torquesystems/rdv" target="_blank" class="price-cta price-cta--outline">En savoir plus</a>
+    <div class="pricing-overview">
+      <div class="pricing-tier reveal">
+        <div class="pricing-tier-name">Starter</div>
+        <div class="pricing-tier-desc">1 système complexe ou 3 simples. Formation 2h + support 3 mois inclus.</div>
+        <div class="pricing-tier-price">À partir de <span>2 990&euro;</span></div>
+        <a href="https://cal.eu/torquesystems/rdv" target="_blank" class="pricing-tier-cta pricing-tier-cta--outline">En savoir plus</a>
       </div>
-      <div class="price-card price-card--featured reveal">
-        <div class="price-card-name">Business</div>
-        <div class="price-card-desc">3 à 5 systèmes + intégration stack. Pour les PME ambitieuses.</div>
-        <div class="price-amount">7 500&euro;</div>
-        <div class="price-note">Paiement unique + ~30&euro;/mois infra</div>
-        <ul class="price-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>3 à 5 systèmes interconnectés</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Intégration stack complète</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Formation 4h incluse</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Support 6 mois</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Monitoring &amp; alertes</li>
-        </ul>
-        <a href="https://cal.eu/torquesystems/rdv" target="_blank" class="price-cta price-cta--filled">Réserver un appel</a>
+      <div class="pricing-tier pricing-tier--featured reveal">
+        <div class="pricing-tier-name">Business</div>
+        <div class="pricing-tier-desc">3 à 5 systèmes interconnectés + intégration stack complète. Formation 4h + support 6 mois.</div>
+        <div class="pricing-tier-price">À partir de <span>7 500&euro;</span></div>
+        <a href="https://cal.eu/torquesystems/rdv" target="_blank" class="pricing-tier-cta pricing-tier-cta--filled">Réserver un appel</a>
       </div>
-      <div class="price-card reveal">
-        <div class="price-card-name">Elite</div>
-        <div class="price-card-desc">8+ systèmes + IA avancée. Architecture sur-mesure complète.</div>
-        <div class="price-amount">15 000&euro;</div>
-        <div class="price-note">Paiement unique + ~50&euro;/mois infra</div>
-        <ul class="price-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>8+ systèmes sur-mesure</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>IA avancée (RAG, analyse)</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Formation 8h incluse</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Support 12 mois</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Accès prioritaire</li>
-        </ul>
-        <a href="https://cal.eu/torquesystems/rdv" target="_blank" class="price-cta price-cta--outline">En savoir plus</a>
+      <div class="pricing-tier reveal">
+        <div class="pricing-tier-name">Elite</div>
+        <div class="pricing-tier-desc">8+ systèmes sur-mesure + IA avancée. Architecture complète, formation 8h, support 12 mois.</div>
+        <div class="pricing-tier-price">À partir de <span>15 000&euro;</span></div>
+        <a href="https://cal.eu/torquesystems/rdv" target="_blank" class="pricing-tier-cta pricing-tier-cta--outline">En savoir plus</a>
       </div>
     </div>
     <div class="pricing-footer reveal">
-      <p>Support continu optionnel : <strong>150 &euro; &mdash; 600 &euro;/mois</strong> selon la formule.<br>Infrastructure (~30&euro;/mois) payée directement par le client. Torque ne facture jamais l'hébergement.</p>
+      <p>Support continu optionnel : <strong>150&euro; &mdash; 600&euro;/mois</strong> selon la formule.<br>Infrastructure (~30&euro;/mois) payée directement par vous. Torque ne facture jamais l’hébergement.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══ FAQ ═══ -->
+<!-- FAQ -->
 <section class="faq" id="faq">
   <div class="container">
     <div style="text-align:center;">
       <div class="section-label reveal">Questions fréquentes</div>
       <h2 class="section-title reveal" style="margin-left:auto;margin-right:auto;">Tout ce que vous voulez savoir.</h2>
-      <p class="section-desc reveal" style="margin-left:auto;margin-right:auto;"></p>
     </div>
     <div class="faq-list">
       <div class="faq-item reveal">
         <button class="faq-q">
-          C'est trop cher.
+          C’est trop cher.
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Un assistant à mi-temps coûte 2 000&euro;/mois, soit 24 000&euro;/an. Le Starter Torque coûte 2 990&euro; une fois + 30&euro;/mois. En un an, vous économisez 11 000&euro; minimum. Une entreprise moyenne perd entre 15 000 et 50 000&euro;/an sur des tâches manuelles et des oublis &mdash; le système se rembourse en 2 à 4 mois.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Un assistant à mi-temps coûte environ 2 000&euro;/mois, soit 24 000&euro;/an. Le Starter Torque coûte 2 990&euro; une fois + ~30&euro;/mois d’infrastructure. En un an, vous économisez au minimum 20 000&euro;. Le système se rembourse en 2 à 4 mois.</div></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">
           On peut le faire nous-mêmes avec Zapier ou Make.
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Vous pouvez refaire votre salle de bain vous-même &mdash; YouTube a toutes les vidéos. Mais vous appelez un plombier parce que c'est fait en 3 jours au lieu de 3 weekends, et ça ne fuit pas. Avec Zapier, vos données sont aux USA et les prix augmentent chaque année. Ici, tout est chez vous.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Vous pouvez refaire votre salle de bain vous-même &mdash; YouTube a toutes les vidéos. Mais vous appelez un plombier parce que c’est fait en 3 jours au lieu de 3 weekends, et ça ne fuit pas. Avec Zapier, vos données sont aux USA et les prix augmentent chaque année. Ici, tout reste chez vous.</div></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">
-          Et si ça bug ?
+          Et si ça bug ?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">3 niveaux de protection : prévention (100+ scénarios testés), détection (health-check toutes les 6 heures, alertes automatiques), correction (retour en arrière en 2 minutes). Les bugs de développement sont corrigés gratuitement.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">3 niveaux de protection : prévention (100+ scénarios testés avant mise en production), détection (health-check toutes les 6 heures + alertes automatiques), correction (retour en arrière en 2 minutes). Les bugs de développement sont corrigés sans frais supplémentaires.</div></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">
-          Nos données sont sensibles / Et le RGPD ?
+          Nos données sont sensibles / Et le RGPD ?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">C'est justement le point fort du modèle Torque. Vos données restent dans votre infrastructure, jamais chez nous. Le modèle est "pipeline, pas réservoir" &mdash; les données passent pour être traitées, elles ne sont pas stockées. Conforme RGPD par design.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">C’est justement le point fort du modèle Torque. Vos données restent dans votre infrastructure, jamais chez moi. Le modèle est “pipeline, pas réservoir” &mdash; les données passent pour être traitées, elles ne sont pas stockées. Conforme RGPD par design.</div></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">
           Je ne suis pas technique.
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">C'est comme un frigo : vous ouvrez la porte et c'est froid. Vous ne voyez que les résultats. Après la formation, vous savez modifier les textes, changer les horaires, activer ou désactiver un système. Pour le reste, on est là.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">C’est comme un frigo : vous ouvrez la porte et c’est froid. Vous ne voyez que les résultats. Après la formation, vous savez modifier les textes, changer les horaires, activer ou désactiver un système. Pour le reste, je suis là.</div></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">
-          Et si vous disparaissez ?
+          Et si vous disparaissez ?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Tout continue de tourner. Votre infrastructure est à vous. Les systèmes tournent indépendamment de Torque. Vous avez toute la documentation. N'importe quel développeur peut reprendre le travail.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Tout continue de tourner. Votre infrastructure est à vous. Les systèmes tournent indépendamment de Torque. Vous avez toute la documentation. N’importe quel développeur peut reprendre le travail.</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ FINAL CTA ═══ -->
+<!-- FINAL CTA -->
 <section class="final-cta">
   <div class="container">
-    <h2 class="reveal">Prêt à récupérer<br>vos heures perdues ?</h2>
-    <p class="reveal">30 minutes de conversation. Gratuit. Sans engagement. On identifie ensemble ce qui peut changer.</p>
+    <h2 class="reveal">Prêt à récupérer<br>vos heures perdues ?</h2>
+    <p class="reveal">30 minutes de conversation. Gratuit. Sans engagement.<br>On identifie ensemble ce qui peut changer.</p>
     <a href="https://cal.eu/torquesystems/rdv" target="_blank" class="btn-primary reveal">
       Réserver un appel découverte
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -1088,24 +1343,25 @@ footer {
   </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
+<!-- FOOTER -->
 <footer>
   <div class="container footer-inner">
     <div class="footer-left">&copy; 2026 Torque Systems. Tous droits réservés.</div>
     <div class="footer-right">
-      <a href="mailto:gabriel@torquesystems.io">gabriel@torquesystems.io</a>
+      <a href="mailto:hello@torquesystems.io">hello@torquesystems.io</a>
+      <a href="#" onclick="return false;">Mentions légales</a>
     </div>
   </div>
 </footer>
 
 <script>
-/* ── Nav scroll effect ── */
+/* Nav scroll effect */
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 20);
-});
+}, { passive: true });
 
-/* ── Scroll reveal ── */
+/* Scroll reveal */
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
@@ -1117,13 +1373,13 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 reveals.forEach(el => observer.observe(el));
 
-/* ── FAQ accordion ── */
+/* FAQ accordion */
 document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
     const item = btn.parentElement;
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
   });
 });
 </script>
